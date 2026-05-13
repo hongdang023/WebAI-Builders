@@ -1,0 +1,8 @@
+{
+  "name": "web-ai-builders-root",
+  "private": true,
+  "scripts": {
+    "build": "cd web && npm install && npm run build",
+    "deploy": "npm run build && npx wrangler pages deploy web/out --project-name=web-ai-builders"
+  }
+}
