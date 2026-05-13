@@ -1,0 +1,24 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/auth/page.tsx
+  56:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/portrait/page.tsx
+   3:29  warning  'useEffect' is defined but never used             @typescript-eslint/no-unused-vars
+   6:39  warning  'Competency' is defined but never used            @typescript-eslint/no-unused-vars
+   9:3   warning  'ChevronRight' is defined but never used          @typescript-eslint/no-unused-vars
+  12:3   warning  'FileText' is defined but never used              @typescript-eslint/no-unused-vars
+  43:9   warning  'scoredCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/danghong/Documents/WebAI Builders/web/src/components/ui/OutcomeCard.tsx
+  35:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  48:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/danghong/Documents/WebAI Builders/web/src/components/ui/RadarChart.tsx
+  21:10  warning  '_color' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 9 problems (0 errors, 9 warnings)
+

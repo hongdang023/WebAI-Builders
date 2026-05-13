@@ -1,0 +1,36 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/auth/page.tsx
+  56:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/page.tsx
+  94:17   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  94:144  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/portrait/page.tsx
+  440:20  error  Parsing error: Expression expected
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/showcase/page.tsx
+   3:10  warning  'MoveRight' is defined but never used                            @typescript-eslint/no-unused-vars
+  44:56  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  44:61  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/danghong/Documents/WebAI Builders/web/src/app/syllabus/components/SyllabusUnit.tsx
+  86:22  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  86:45  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/danghong/Documents/WebAI Builders/web/src/components/ui/OutcomeCard.tsx
+  16:3   warning  'beforeLabel' is defined but never used                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  36:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  49:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  71:13  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  71:26  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+
+/Users/danghong/Documents/WebAI Builders/web/src/components/ui/RadarChart.tsx
+  21:10  warning  '_color' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 15 problems (9 errors, 6 warnings)
+

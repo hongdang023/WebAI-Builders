@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #F9F7F5;
+  --color-foreground: #1D1D1F;
+  --color-soft: #EDE6DE;
+  --color-primary: #8E3A3A;
+  --color-line: #E5E5E7;
+  
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --radius-xl: 12px;
+
+  /* Typography Scale */
+  --text-display: 4rem;
+  --text-display--line-height: 1.1;
+  --text-display--font-weight: 800;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-h1: 3rem;
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 800;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 1.2;
+  --text-h2--font-weight: 700;
+  --text-h2--letter-spacing: -0.01em;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--font-weight: 700;
+  --text-h3--letter-spacing: -0.01em;
+
+  --text-h4: 1.25rem;
+  --text-h4--line-height: 1.4;
+  --text-h4--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.75;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.75;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.5;
+  --text-label--font-weight: 700;
+  --text-label--letter-spacing: 0.05em;
+
+  /* Spacing Scale (4px base) */
+  --spacing-tight: 0.5rem;   /* 8px */
+  --spacing-base: 1rem;    /* 16px */
+  --spacing-loose: 2rem;   /* 32px */
+  --spacing-section: 4rem; /* 64px */
+}
+
+::selection {
+  background-color: #8E3A3A;
+  color: #FFFFFF;
+}
+
+:root {
+  --background: #F9F7F5;
+  --foreground: #1D1D1F;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  @apply text-body font-medium antialiased;
+}
+
+h1 { @apply text-h1 text-foreground; }
+h2 { @apply text-h2 text-foreground; }
+h3 { @apply text-h3 text-foreground; }
+h4 { @apply text-h4 text-foreground; }
+
+p { @apply max-w-3xl; }
+
+/* Global Button Styles */
+.btn-primary {
+  @apply bg-primary text-white font-bold rounded-full transition-all duration-200 active:scale-95 hover:shadow-lg hover:shadow-primary/20;
+}
+
+.btn-secondary {
+  @apply bg-soft text-foreground/60 font-bold rounded-full transition-all duration-200 active:scale-95 hover:bg-line;
+}
