@@ -40,7 +40,7 @@ export default function ShowcasePage() {
             The <span className="text-primary">Showcase</span>
           </h1>
           <p className="text-sm md:text-base text-foreground/40 font-medium max-w-xl mx-auto leading-relaxed">
-            Chiêm ngưỡng hành trình lột xác từ website "số 0" đến những cỗ máy bán hàng chuyên nghiệp được build bởi Non-tech Builders.
+            Chiêm ngưỡng hành trình lột xác từ website &quot;số 0&quot; đến những cỗ máy bán hàng chuyên nghiệp được build bởi Non-tech Builders.
           </p>
         </div>
       </section>

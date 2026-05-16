@@ -19,12 +19,17 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { PortraitReport } from "@/components/portrait/PortraitReport";
+import { generateCompetencyPDF } from "@/lib/pdf";
+
 
 export default function PortraitPage() {
   const [step, setStep] = useState<"intro" | "test" | "result">("intro");
   const [scores, setScores] = useState<Record<string, number>>({});
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [isDownloading, setIsDownloading] = useState(false);
+
 
   // Group data by category
   const groupedCompetencies = useMemo(() => {
@@ -107,6 +112,14 @@ export default function PortraitPage() {
     name: c.name,
     score: scores[c.id] || 0
   }));
+
+  const handleDownloadPDF = async () => {
+    setIsDownloading(true);
+    const date = new Date().toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' });
+    await generateCompetencyPDF("portrait-report-template", `Ket-qua-AI-Competency-${new Date().getTime()}.pdf`);
+    setIsDownloading(false);
+  };
+
 
   return (
     <main className="flex-1 bg-background pb-32 min-h-screen">
@@ -512,13 +525,28 @@ export default function PortraitPage() {
                     <RefreshCw className="w-4 h-4 text-primary" />
                     Đánh giá lại
                   </Button>
-                  <Button variant="outline" className="py-3.5 flex items-center justify-center gap-2 border-line bg-transparent rounded-xl text-sm">
+                  <Button 
+                    variant="outline" 
+                    onClick={handleDownloadPDF}
+                    disabled={isDownloading}
+                    className="py-3.5 flex items-center justify-center gap-2 border-line bg-transparent rounded-xl text-sm"
+                  >
                     <Layout className="w-4 h-4" />
-                    Tải kết quả PDF
+                    {isDownloading ? "Đang xử lý..." : "Tải kết quả PDF"}
                   </Button>
                 </div>
               </div>
+
+              {/* Hidden Report Template for PDF Generation */}
+              <PortraitReport 
+                scores={scores}
+                expertise={expertise}
+                totalScore={totalScore}
+                maxPossibleScore={maxPossibleScore}
+                date={new Date().toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })}
+              />
             </motion.section>
+
           )}
         </AnimatePresence>
       </div>
