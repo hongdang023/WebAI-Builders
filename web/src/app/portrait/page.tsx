@@ -118,9 +118,9 @@ export default function PortraitPage() {
       setIsDownloading(true);
       const timestamp = new Date().getTime();
       await generateCompetencyPDF("portrait-report-template", `Ket-qua-AI-Competency-${timestamp}.pdf`);
-    } catch (error) {
+    } catch (error: any) {
       console.error("PDF Export failed:", error);
-      alert("Có lỗi xảy ra khi tạo file PDF. Vui lòng thử lại sau hoặc chụp màn hình kết quả.");
+      alert(`Có lỗi xảy ra: ${error.message}\n\nVui lòng thử lại hoặc liên hệ hỗ trợ nếu vấn đề tiếp diễn.`);
     } finally {
       setIsDownloading(false);
     }

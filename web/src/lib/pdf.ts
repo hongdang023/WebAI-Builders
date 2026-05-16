@@ -4,20 +4,22 @@ import html2canvas from "html2canvas";
 export async function generateCompetencyPDF(elementId: string, filename: string) {
   const element = document.getElementById(elementId);
   if (!element) {
-    console.error(`Element with id ${elementId} not found`);
-    return;
+    throw new Error(`Không tìm thấy thành phần có ID: ${elementId}`);
   }
 
   try {
-    console.log("Starting PDF generation for:", elementId);
+    console.log("Khởi tạo quá trình tạo PDF cho:", elementId);
     
-    // Use html2canvas with better options for hidden elements and SVGs
+    // Improved configuration for html2canvas to handle SVGs better
     const canvas = await html2canvas(element, {
       scale: 1.5,
       useCORS: true,
       logging: true,
       backgroundColor: "#ffffff",
-      // Force element to be visible during cloning process
+      allowTaint: true,
+      scrollX: 0,
+      scrollY: -window.scrollY,
+      windowWidth: 800,
       onclone: (clonedDoc) => {
         const clonedElement = clonedDoc.getElementById(elementId);
         if (clonedElement) {
@@ -25,14 +27,21 @@ export async function generateCompetencyPDF(elementId: string, filename: string)
           clonedElement.style.position = "relative";
           clonedElement.style.left = "0";
           clonedElement.style.visibility = "visible";
-          clonedElement.style.zIndex = "1";
+          clonedElement.style.opacity = "1";
+          
+          // Fix for some SVG issues in html2canvas
+          const svgs = clonedElement.querySelectorAll("svg");
+          svgs.forEach(svg => {
+            svg.setAttribute("width", svg.getBoundingClientRect().width.toString());
+            svg.setAttribute("height", svg.getBoundingClientRect().height.toString());
+          });
         }
       }
     });
 
-    console.log("Canvas captured successfully, size:", canvas.width, "x", canvas.height);
+    console.log("Đã chụp được Canvas. Kích thước:", canvas.width, "x", canvas.height);
 
-    const imgData = canvas.toDataURL("image/jpeg", 0.9); // Use JPEG for smaller size and faster PDF generation
+    const imgData = canvas.toDataURL("image/jpeg", 0.9);
     const pdf = new jsPDF("p", "mm", "a4");
     
     const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -42,23 +51,22 @@ export async function generateCompetencyPDF(elementId: string, filename: string)
     let position = 0;
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    // First page
     pdf.addImage(imgData, "JPEG", 0, position, pdfWidth, pdfHeight);
     heightLeft -= pageHeight;
 
-    // Subsequent pages if content is long
     while (heightLeft >= 0) {
       position = heightLeft - pdfHeight;
       pdf.addPage();
-      pdf.addImage(imgData, "JPEG", 0, position, pdfWidth, pdfHeight);
+      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, pdfHeight);
       heightLeft -= pageHeight;
     }
 
     pdf.save(filename);
-    console.log("PDF saved successfully:", filename);
+    console.log("Lưu file thành công:", filename);
     return true;
-  } catch (error) {
-    console.error("Error generating PDF:", error);
-    throw error;
+  } catch (error: any) {
+    console.error("Chi tiết lỗi PDF:", error);
+    // Return the specific error message to be displayed in the UI
+    throw new Error(error.message || "Lỗi không xác định trong quá trình xử lý Canvas");
   }
 }

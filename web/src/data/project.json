@@ -1,0 +1,47 @@
+{
+  "project": {
+    "name": "Web AI Builders",
+    "description": "Nền tảng đào tạo Non-tech trở thành Builder thực thụ với sự hỗ trợ của AI.",
+    "version": "1.0.0",
+    "status": "Active",
+    "lastUpdated": "2026-05-16"
+  },
+  "team": [
+    {
+      "name": "Đặng Hồng",
+      "role": "Founder / Lead Developer",
+      "specialty": "AI Engineering & Product Design"
+    },
+    {
+      "name": "Anh Đắc",
+      "role": "Team Member",
+      "specialty": "Strategic Growth"
+    }
+  ],
+  "syllabus": {
+    "units": [
+      {
+        "id": 1,
+        "title": "Unit 1: Bán cho ai?",
+        "focus": "JTBD & Outcome",
+        "description": "Xác định chân dung khách hàng và bài toán thực tế cần giải quyết."
+      },
+      {
+        "id": 2,
+        "title": "Unit 2: Bán cái gì?",
+        "focus": "Portfolio & Value Prop",
+        "description": "Thiết kế danh mục sản phẩm và giá trị cốt lõi."
+      },
+      {
+        "id": 3,
+        "title": "Unit 3: Bán như thế nào?",
+        "focus": "PRD & Go-live",
+        "description": "Triển khai sản phẩm thực tế với quy trình chuẩn chỉnh."
+      }
+    ]
+  },
+  "endpoints": {
+    "projectInfo": "/api/project",
+    "competencyFramework": "/api/competency"
+  }
+}
