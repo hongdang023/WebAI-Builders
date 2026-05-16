@@ -36,8 +36,8 @@ export function PortraitReport({
   return (
     <div 
       id="portrait-report-template" 
-      className="fixed bg-white text-foreground p-10 w-[800px]" 
-      style={{ left: "-9999px", top: 0, zIndex: -100 }}
+      className="absolute bg-white text-foreground p-10 w-[800px]" 
+      style={{ left: 0, top: 0, zIndex: -100, opacity: 0, pointerEvents: 'none' }}
     >
       {/* Header */}
       <div className="border-b-2 border-primary pb-6 mb-8 flex justify-between items-end">

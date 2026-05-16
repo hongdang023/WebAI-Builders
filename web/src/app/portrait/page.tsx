@@ -114,10 +114,16 @@ export default function PortraitPage() {
   }));
 
   const handleDownloadPDF = async () => {
-    setIsDownloading(true);
-    const date = new Date().toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' });
-    await generateCompetencyPDF("portrait-report-template", `Ket-qua-AI-Competency-${new Date().getTime()}.pdf`);
-    setIsDownloading(false);
+    try {
+      setIsDownloading(true);
+      const timestamp = new Date().getTime();
+      await generateCompetencyPDF("portrait-report-template", `Ket-qua-AI-Competency-${timestamp}.pdf`);
+    } catch (error) {
+      console.error("PDF Export failed:", error);
+      alert("Có lỗi xảy ra khi tạo file PDF. Vui lòng thử lại sau hoặc chụp màn hình kết quả.");
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
 
